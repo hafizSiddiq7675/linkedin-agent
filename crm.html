@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sales Nav Scraper - CRM</title>
+    <link rel="stylesheet" type="text/css" href="crm.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1>Lead CRM</h1>
+        <div class="actions">
+            <input type="text" id="searchInput" placeholder="Search leads...">
+            <button id="exportBtn" class="primary-btn">Export CSV</button>
+            <button id="clearBtn" class="danger-btn">Clear All</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <table id="leadsTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Profile</th>
+                    <th>Last Message</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows will be populated by JS -->
+            </tbody>
+        </table>
+        <div id="emptyState" class="empty-state" style="display: none;">
+            No leads found. Start scraping!
+        </div>
+    </div>
+
+    <script src="crm.js"></script>
+</body>
+
+</html>

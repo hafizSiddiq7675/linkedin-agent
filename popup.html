@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Sales Nav Scraper</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Sales Nav Scraper</h1>
+    <div class="controls">
+      <button id="startBtn" class="primary-btn">Start Scraping</button>
+      <button id="stopBtn" class="secondary-btn" disabled>Stop</button>
+      <button id="settingsBtn" class="secondary-btn" title="Settings">⚙️</button>
+    </div>
+    <div class="status-area">
+      <p>Status: <span id="status">Idle</span></p>
+      <p>Leads Found: <span id="count">0</span></p>
+    </div>
+    <div class="export-area">
+      <button id="openCrmBtn" class="primary-btn" style="width: 100%; margin-bottom: 5px;">Open CRM Dashboard</button>
+      <button id="downloadBtn" class="action-btn" disabled>Download CSV</button>
+      <button id="clearBtn" class="secondary-btn" style="margin-top: 5px; width: 100%;">Clear Data</button>
+    </div>
+    <div id="log" class="log-container"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+
+</html>

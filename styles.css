@@ -1,0 +1,92 @@
+body {
+  width: 320px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 15px;
+  background-color: #f3f2ef; /* LinkedIn-ish background */
+  color: #333;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+h1 {
+  font-size: 18px;
+  margin: 0;
+  color: #0a66c2; /* LinkedIn Blue */
+  text-align: center;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.primary-btn {
+  background-color: #0a66c2;
+  color: white;
+}
+
+.primary-btn:hover:not(:disabled) {
+  background-color: #004182;
+}
+
+.secondary-btn {
+  background-color: #ffffff;
+  color: #666;
+  border: 1px solid #ccc;
+}
+
+.secondary-btn:hover:not(:disabled) {
+  background-color: #e0e0e0;
+}
+
+.action-btn {
+  width: 100%;
+  background-color: #057642; /* Green for export */
+  color: white;
+}
+
+.action-btn:hover:not(:disabled) {
+  background-color: #046236;
+}
+
+.status-area {
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.status-area p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.log-container {
+  height: 100px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 12px;
+  font-family: monospace;
+}
