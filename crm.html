@@ -4,34 +4,80 @@
 <head>
     <title>Sales Nav Scraper - CRM</title>
     <link rel="stylesheet" type="text/css" href="crm.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
     <div class="header">
-        <h1>Lead CRM</h1>
+        <h1><i class="fas fa-database"></i> Lead CRM</h1>
         <div class="actions">
             <input type="text" id="searchInput" placeholder="Search leads...">
-            <button id="exportBtn" class="primary-btn">Export CSV</button>
-            <button id="clearBtn" class="danger-btn">Clear All</button>
+            <button id="exportBtn" class="primary-btn"><i class="fas fa-download"></i> Export CSV</button>
+            <button id="clearBtn" class="danger-btn"><i class="fas fa-trash-alt"></i> Clear All</button>
         </div>
     </div>
 
+    <!-- Tab Navigation -->
+    <div class="tabs">
+        <button class="tab-btn active" data-tab="all-leads">
+            <i class="fas fa-comments"></i> All Chats (<span id="allLeadsCount">0</span>)
+        </button>
+        <button class="tab-btn" data-tab="positive-intent">
+            <i class="fas fa-star"></i> Positive Intent (<span id="positiveLeadsCount">0</span>)
+        </button>
+    </div>
+
     <div class="container">
-        <table id="leadsTable">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Profile</th>
-                    <th>Last Message</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Rows will be populated by JS -->
-            </tbody>
-        </table>
-        <div id="emptyState" class="empty-state" style="display: none;">
-            No leads found. Start scraping!
+        <!-- All Leads Tab -->
+        <div id="all-leads-content" class="tab-content active">
+            <table id="leadsTable">
+                <thead>
+                    <tr>
+                        <th>Conversation With</th>
+                        <th>Sender</th>
+                        <th>Message</th>
+                        <th>Time</th>
+                        <th>Intent</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be populated by JS -->
+                </tbody>
+            </table>
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <i class="fas fa-comments" style="font-size: 48px; color: #ccc; margin-bottom: 16px;"></i>
+                <p>No chat messages yet.</p>
+                <p style="font-size: 14px; color: #666; margin-top: 8px;">
+                    Start scraping chats to see all conversations here!
+                </p>
+            </div>
+        </div>
+
+        <!-- Positive Intent Tab -->
+        <div id="positive-intent-content" class="tab-content">
+            <table id="positiveLeadsTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Profile</th>
+                        <th>Last Positive Message</th>
+                        <th>Time</th>
+                        <th>Positive Messages</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be populated by JS -->
+                </tbody>
+            </table>
+            <div id="emptyStatePositive" class="empty-state" style="display: none;">
+                <i class="fas fa-star" style="font-size: 48px; color: #f59e0b; margin-bottom: 16px;"></i>
+                <p>No positive intent leads yet.</p>
+                <p style="font-size: 14px; color: #666; margin-top: 8px;">
+                    Scrape chats to find interested prospects automatically!
+                </p>
+            </div>
         </div>
     </div>
 

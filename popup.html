@@ -4,26 +4,82 @@
 <head>
   <title>Sales Nav Scraper</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
   <div class="container">
-    <h1>Sales Nav Scraper</h1>
-    <div class="controls">
-      <button id="startBtn" class="primary-btn">Start Scraping</button>
-      <button id="stopBtn" class="secondary-btn" disabled>Stop</button>
-      <button id="settingsBtn" class="secondary-btn" title="Settings">⚙️</button>
+    <!-- Header -->
+    <div class="header">
+      <h1><i class="fas fa-chart-line"></i> Sales Nav Scraper</h1>
+      <button id="settingsBtn" class="icon-btn" title="Settings">
+        <i class="fas fa-cog"></i>
+      </button>
     </div>
+
+    <!-- Action Buttons -->
+    <div class="button-row">
+      <button id="startBtn" class="primary-btn" style="display: none;">
+        <i class="fas fa-play"></i> Start Scraping
+      </button>
+      <button id="scrapeChatsBtn" class="warning-btn">
+        <i class="fas fa-comments"></i> Scrape Chats
+      </button>
+    </div>
+
+    <div class="button-row">
+      <button id="stopBtn" class="danger-btn" disabled>
+        <i class="fas fa-stop"></i> Stop
+      </button>
+      <button id="openCrmBtn" class="info-btn">
+        <i class="fas fa-database"></i> Open CRM
+      </button>
+    </div>
+
+    <!-- Status -->
     <div class="status-area">
-      <p>Status: <span id="status">Idle</span></p>
-      <p>Leads Found: <span id="count">0</span></p>
+      <div class="status-item">
+        <span class="status-label">Status:</span>
+        <span id="status" class="status-value">Idle</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">Leads:</span>
+        <span id="count" class="status-value">0</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">Chats:</span>
+        <span id="chatCount" class="status-value">0</span>
+      </div>
+      <div class="status-item positive-status">
+        <span class="status-label"><i class="fas fa-star"></i> Positive:</span>
+        <span id="positiveCount" class="status-value">0</span>
+      </div>
     </div>
-    <div class="export-area">
-      <button id="openCrmBtn" class="primary-btn" style="width: 100%; margin-bottom: 5px;">Open CRM Dashboard</button>
-      <button id="downloadBtn" class="action-btn" disabled>Download CSV</button>
-      <button id="clearBtn" class="secondary-btn" style="margin-top: 5px; width: 100%;">Clear Data</button>
+
+    <!-- Export Buttons -->
+    <div class="export-section">
+      <h3 class="section-title"><i class="fas fa-file-export"></i> Export Data</h3>
+      <div class="button-row">
+        <button id="downloadBtn" class="export-btn" disabled>
+          <i class="fas fa-file-csv"></i> Leads CSV
+        </button>
+        <button id="downloadChatsBtn" class="export-btn" disabled>
+          <i class="fas fa-comments"></i> All Chats
+        </button>
+      </div>
+      <button id="downloadPositiveBtn" class="export-btn positive" disabled>
+        <i class="fas fa-star"></i> Positive Intent CSV
+      </button>
+      <button id="clearBtn" class="clear-btn">
+        <i class="fas fa-trash-alt"></i> Clear Data
+      </button>
     </div>
-    <div id="log" class="log-container"></div>
+
+    <!-- Log -->
+    <div class="log-section">
+      <h3 class="section-title"><i class="fas fa-list"></i> Activity Log</h3>
+      <div id="log" class="log-container"></div>
+    </div>
   </div>
   <script src="popup.js"></script>
 </body>
