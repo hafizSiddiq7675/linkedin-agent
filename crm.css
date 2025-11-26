@@ -17,6 +17,10 @@ body {
 h1 {
     margin: 0;
     color: #0a66c2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
 }
 
 .actions {
@@ -37,6 +41,10 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
 }
 
 .primary-btn {
@@ -46,6 +54,7 @@ button {
 
 .primary-btn:hover {
     background-color: #004182;
+    transform: translateY(-1px);
 }
 
 .danger-btn {
@@ -55,6 +64,55 @@ button {
 
 .danger-btn:hover {
     background-color: #a00c1b;
+    transform: translateY(-1px);
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    background: white;
+    border-bottom: 2px solid #e5e7eb;
+    padding: 0 30px;
+    gap: 5px;
+}
+
+.tab-btn {
+    padding: 14px 24px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    color: #666;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tab-btn:hover {
+    color: #0a66c2;
+    background-color: #f3f2ef;
+    transform: none;
+}
+
+.tab-btn.active {
+    color: #0a66c2;
+    border-bottom-color: #0a66c2;
+    background-color: transparent;
+}
+
+.tab-btn i {
+    font-size: 16px;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
 }
 
 .container {
@@ -123,4 +181,31 @@ a:hover {
     padding: 50px;
     color: #888;
     font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Positive Intent Specific Styles */
+.positive-row {
+    background-color: #fffbeb;
+}
+
+.positive-row:hover {
+    background-color: #fef3c7 !important;
+}
+
+.badge {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+#positiveLeadsTable th {
+    background-color: #fffbeb;
+    color: #92400e;
 }

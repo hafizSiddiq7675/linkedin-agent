@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         apiKeyField.style.display = 'none';
         ollamaField.style.display = 'none';
 
-        if (val === 'openai' || val === 'gemini') {
+        if (val === 'openai' || val === 'gemini' || val === 'huggingface') {
             apiKeyField.style.display = 'block';
         } else if (val === 'ollama') {
             ollamaField.style.display = 'block';
