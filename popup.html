@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Sales Nav Scraper</title>
+  <title>LinkedIn Sales Nav Agent</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -11,7 +11,7 @@
   <div class="container">
     <!-- Header -->
     <div class="header">
-      <h1><i class="fas fa-chart-line"></i> Sales Nav Scraper</h1>
+      <h1><i class="fas fa-chart-line"></i> LinkedIn Sales Nav Agent</h1>
       <button id="settingsBtn" class="icon-btn" title="Settings">
         <i class="fas fa-cog"></i>
       </button>
@@ -22,14 +22,17 @@
       <button id="startBtn" class="primary-btn" style="display: none;">
         <i class="fas fa-play"></i> Start Scraping
       </button>
-      <button id="scrapeChatsBtn" class="warning-btn">
-        <i class="fas fa-comments"></i> Scrape Chats
-      </button>
     </div>
 
     <div class="button-row">
+      <button id="scrapeChatsBtn" class="warning-btn">
+        <i class="fas fa-comments"></i> Scrape Chats
+      </button>
       <button id="stopBtn" class="danger-btn" disabled>
         <i class="fas fa-stop"></i> Stop
+      </button>
+      <button id="resumeBtn" class="success-btn" disabled style="display: none;">
+        <i class="fas fa-play-circle"></i> Resume
       </button>
       <button id="openCrmBtn" class="info-btn">
         <i class="fas fa-database"></i> Open CRM
