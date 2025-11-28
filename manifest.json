@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "LinkedIn Sales Nav Scraper",
+  "name": "LinkedIn Sales Nav Agent",
   "version": "1.0",
   "description": "Scrape positive responses from LinkedIn Sales Navigator messages.",
   "permissions": [
