@@ -206,7 +206,7 @@ async function scanVisibleThreads() {
     const leads = [];
 
     // Get Settings
-    const settings = await chrome.storage.sync.get(['aiProvider', 'apiKey', 'ollamaEndpoint', 'ollamaModel', 'customPrompt']);
+    const settings = await chrome.storage.sync.get(['aiProvider', 'apiKey', 'groqApiKey', 'groqModel', 'ollamaEndpoint', 'ollamaModel', 'customPrompt']);
     const prompt = settings.customPrompt || DEFAULT_PROMPT;
 
     console.log(`AI Provider: ${settings.aiProvider}`);
@@ -310,7 +310,8 @@ async function scanVisibleThreads() {
                     action: 'ANALYZE_TEXT',
                     text: lastMessage,
                     provider: settings.aiProvider,
-                    apiKey: settings.apiKey,
+                    apiKey: settings.aiProvider === 'groq' ? settings.groqApiKey : settings.apiKey,
+                    groqModel: settings.groqModel,
                     ollamaEndpoint: settings.ollamaEndpoint,
                     ollamaModel: settings.ollamaModel,
                     prompt: prompt
@@ -903,7 +904,7 @@ async function extractChatData(conversationName, profileUrl) {
     const articles = messageContainer.querySelectorAll('article');
 
     // Get AI settings
-    const settings = await chrome.storage.sync.get(['aiProvider', 'apiKey', 'ollamaEndpoint', 'ollamaModel']);
+    const settings = await chrome.storage.sync.get(['aiProvider', 'apiKey', 'groqApiKey', 'groqModel', 'ollamaEndpoint', 'ollamaModel']);
 
     let hasPositiveIntent = false;
 
@@ -932,7 +933,8 @@ async function extractChatData(conversationName, profileUrl) {
                         action: 'ANALYZE_TEXT',
                         text: content,
                         provider: settings.aiProvider,
-                        apiKey: settings.apiKey,
+                        apiKey: settings.aiProvider === 'groq' ? settings.groqApiKey : settings.apiKey,
+                        groqModel: settings.groqModel,
                         ollamaEndpoint: settings.ollamaEndpoint,
                         ollamaModel: settings.ollamaModel,
                         prompt: 'Analyze this message sentiment'

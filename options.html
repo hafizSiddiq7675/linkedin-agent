@@ -65,6 +65,7 @@
     <label for="aiProvider">AI Provider</label>
     <select id="aiProvider">
         <option value="chrome">Chrome Built-in AI (Gemini Nano)</option>
+        <option value="groq">Groq (Free - Fast LLaMA)</option>
         <option value="openai">OpenAI API</option>
         <option value="gemini">Google Gemini API</option>
         <option value="huggingface">Hugging Face API</option>
@@ -75,6 +76,23 @@
     <div id="apiKeyField" style="display: none;">
         <label for="apiKey">API Key</label>
         <input type="password" id="apiKey" placeholder="sk-...">
+    </div>
+
+    <div id="groqField" style="display: none;">
+        <label for="groqApiKey">Groq API Key</label>
+        <input type="password" id="groqApiKey" placeholder="gsk_...">
+        <div class="note">
+            <a href="https://console.groq.com/keys" target="_blank">Get free API key from Groq Console</a>
+        </div>
+
+        <label for="groqModel">Model</label>
+        <select id="groqModel">
+            <option value="llama-3.1-8b-instant">LLaMA 3.1 8B Instant (Fastest)</option>
+            <option value="llama-3.3-70b-versatile">LLaMA 3.3 70B Versatile (Best Quality)</option>
+            <option value="mixtral-8x7b-32768">Mixtral 8x7B (Balanced)</option>
+            <option value="gemma2-9b-it">Gemma 2 9B (Good for Classification)</option>
+        </select>
+        <div class="note">Free tier: 30 requests/min, 14,400 requests/day</div>
     </div>
 
     <div id="ollamaField" style="display: none;">
