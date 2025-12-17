@@ -20,7 +20,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 async function handleAnalysis(data) {
-    const { provider, apiKey, prompt, text, ollamaEndpoint, ollamaModel } = data;
+    const { provider, apiKey, prompt, text, ollamaEndpoint, ollamaModel, groqModel } = data;
     const fullPrompt = `${prompt}\n\nMessage: "${text}"\n\nAnswer:`;
 
     try {
@@ -157,6 +157,61 @@ Answer (one word only):`;
                 console.error('Unexpected HF response format:', json);
                 return { error: 'Unexpected response format from Hugging Face' };
             }
+        }
+        else if (provider === 'groq') {
+            // Groq API - OpenAI compatible, fast inference with free tier
+            const model = groqModel || 'llama-3.1-8b-instant';
+
+            const sentimentPrompt = `Analyze the sentiment and intent of this LinkedIn message. Reply with ONLY ONE WORD: positive, negative, or neutral.
+
+Rules:
+- "positive" = interested, wants to meet, asking for info, positive tone
+- "negative" = not interested, declining, busy, negative tone
+- "neutral" = generic response, unclear intent
+
+Message: "${text}"
+
+Answer (one word only):`;
+
+            const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    model: model,
+                    messages: [
+                        { role: 'system', content: 'You are a sentiment analysis assistant. Respond with exactly one word: positive, negative, or neutral.' },
+                        { role: 'user', content: sentimentPrompt }
+                    ],
+                    temperature: 0,
+                    max_tokens: 10
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                console.error('Groq API Error:', response.status, errorData);
+                return { error: errorData.error?.message || `HTTP ${response.status}` };
+            }
+
+            const json = await response.json();
+            const content = json.choices[0]?.message?.content?.trim().toLowerCase() || '';
+            console.log('Groq Analysis Result:', content);
+
+            // Determine sentiment
+            const isPositive = content.includes('positive');
+            let sentiment = 'neutral';
+            if (content.includes('positive')) sentiment = 'positive';
+            else if (content.includes('negative')) sentiment = 'negative';
+
+            return {
+                isPositive: isPositive,
+                sentiment: sentiment,
+                confidence: 0.9,
+                model: json.model
+            };
         }
     } catch (e) {
         console.error('Background Analysis Error:', e);

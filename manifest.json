@@ -16,7 +16,8 @@
     "http://localhost/*",
     "https://api.openai.com/*",
     "https://generativelanguage.googleapis.com/*",
-    "https://router.huggingface.co/*"
+    "https://router.huggingface.co/*",
+    "https://api.groq.com/*"
   ],
   "action": {
     "default_popup": "popup.html",
